@@ -98,7 +98,7 @@ main{
   font-size: 22px;
 }
 
-.content input{
+.content input, .content textarea {
   width: 90%;
   padding: 10px 5%;
   border-radius: 10px;
@@ -162,4 +162,8 @@ main.ng-enter.ng-enter-active {
 #ninja-list li.ng-leave-stagger {
   transition-delay: 0.2s;
   transition-duration: 0; 
+}
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border: 2px solid red;
 }
