@@ -16,7 +16,7 @@ myNinjaApp.config(['$routeProvider', function($routeProvider) {
 
 }]);
 
-myNinjaApp.controller('NinjaController', ['$scope', function($scope) {
+myNinjaApp.controller('NinjaController', ['$scope', '$http', function($scope, $http) {
 
   $scope.removeNinja = function(ninja) {
     var removedNinja = $scope.ninjas.indexOf(ninja);
@@ -36,35 +36,9 @@ myNinjaApp.controller('NinjaController', ['$scope', function($scope) {
     $scope.newninja.rate = "";
   };
 
-  $scope.ninjas = [
-    {
-      name: "Yoshi",
-      belt: "green",
-      rate: 50,
-      available: true,
-      thumb: "content/img/yoshi.png"
-    },
-    {
-      name: "Crystal",
-      belt: "yellow",
-      rate: 30,
-      available: true,
-      thumb: "content/img/crystal.png"
-    },
-    {
-      name: "Ryu",
-      belt: "orange",
-      rate: 10,
-      available: true,
-      thumb: "content/img/ryu.jpg"
-    },
-    {
-      name: "Shaun",
-      belt: "black",
-      rate: 1000,
-      available: true,
-      thumb: "content/img/shaun.jpg"
-    }
-  ];
+  $http.get('data/ninjas.json')
+    .success(function(data) {
+      $scope.ninjas = data;
+    });
 
 }]);
